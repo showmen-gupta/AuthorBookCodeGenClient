@@ -1,0 +1,23 @@
+query getBooks {
+  allBooks {
+    id
+    name
+    price
+    author{
+        id
+        name
+    }
+  }
+}
+
+mutation insertBook($name: String!, $price: Float!, $author_id: ID!) {
+    addBook(name: $name, price: $price, author_id: $author_id) {
+        id
+        name
+        price
+        author{
+            id
+            name
+        }
+    }
+}

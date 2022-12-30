@@ -97,6 +97,27 @@ export type GetAuthorsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetAuthorsQuery = { __typename?: 'Query', allAuthors?: Array<{ __typename?: 'Author', id?: string | null, name: string } | null> | null };
 
+export type CreateAuthorMutationVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type CreateAuthorMutation = { __typename?: 'Mutation', addAuthor: { __typename?: 'Author', id?: string | null, name: string } };
+
+export type GetBooksQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetBooksQuery = { __typename?: 'Query', allBooks?: Array<{ __typename?: 'Book', id?: string | null, name: string, price: number, author: { __typename?: 'Author', id?: string | null, name: string } } | null> | null };
+
+export type InsertBookMutationVariables = Exact<{
+  name: Scalars['String'];
+  price: Scalars['Float'];
+  author_id: Scalars['ID'];
+}>;
+
+
+export type InsertBookMutation = { __typename?: 'Mutation', addBook: { __typename?: 'Book', id?: string | null, name: string, price: number, author: { __typename?: 'Author', id?: string | null, name: string } } };
+
 
 export const GetAuthorsDocument = gql`
     query getAuthors {
@@ -136,3 +157,121 @@ export type GetAuthorsQueryResult = Apollo.QueryResult<GetAuthorsQuery, GetAutho
 export function refetchGetAuthorsQuery(variables?: GetAuthorsQueryVariables) {
       return { query: GetAuthorsDocument, variables: variables }
     }
+export const CreateAuthorDocument = gql`
+    mutation createAuthor($name: String!) {
+  addAuthor(name: $name) {
+    id
+    name
+  }
+}
+    `;
+export type CreateAuthorMutationFn = Apollo.MutationFunction<CreateAuthorMutation, CreateAuthorMutationVariables>;
+
+/**
+ * __useCreateAuthorMutation__
+ *
+ * To run a mutation, you first call `useCreateAuthorMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateAuthorMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createAuthorMutation, { data, loading, error }] = useCreateAuthorMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useCreateAuthorMutation(baseOptions?: Apollo.MutationHookOptions<CreateAuthorMutation, CreateAuthorMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateAuthorMutation, CreateAuthorMutationVariables>(CreateAuthorDocument, options);
+      }
+export type CreateAuthorMutationHookResult = ReturnType<typeof useCreateAuthorMutation>;
+export type CreateAuthorMutationResult = Apollo.MutationResult<CreateAuthorMutation>;
+export type CreateAuthorMutationOptions = Apollo.BaseMutationOptions<CreateAuthorMutation, CreateAuthorMutationVariables>;
+export const GetBooksDocument = gql`
+    query getBooks {
+  allBooks {
+    id
+    name
+    price
+    author {
+      id
+      name
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetBooksQuery__
+ *
+ * To run a query within a React component, call `useGetBooksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBooksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBooksQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetBooksQuery(baseOptions?: Apollo.QueryHookOptions<GetBooksQuery, GetBooksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBooksQuery, GetBooksQueryVariables>(GetBooksDocument, options);
+      }
+export function useGetBooksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBooksQuery, GetBooksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBooksQuery, GetBooksQueryVariables>(GetBooksDocument, options);
+        }
+export type GetBooksQueryHookResult = ReturnType<typeof useGetBooksQuery>;
+export type GetBooksLazyQueryHookResult = ReturnType<typeof useGetBooksLazyQuery>;
+export type GetBooksQueryResult = Apollo.QueryResult<GetBooksQuery, GetBooksQueryVariables>;
+export function refetchGetBooksQuery(variables?: GetBooksQueryVariables) {
+      return { query: GetBooksDocument, variables: variables }
+    }
+export const InsertBookDocument = gql`
+    mutation insertBook($name: String!, $price: Float!, $author_id: ID!) {
+  addBook(name: $name, price: $price, author_id: $author_id) {
+    id
+    name
+    price
+    author {
+      id
+      name
+    }
+  }
+}
+    `;
+export type InsertBookMutationFn = Apollo.MutationFunction<InsertBookMutation, InsertBookMutationVariables>;
+
+/**
+ * __useInsertBookMutation__
+ *
+ * To run a mutation, you first call `useInsertBookMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInsertBookMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [insertBookMutation, { data, loading, error }] = useInsertBookMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *      price: // value for 'price'
+ *      author_id: // value for 'author_id'
+ *   },
+ * });
+ */
+export function useInsertBookMutation(baseOptions?: Apollo.MutationHookOptions<InsertBookMutation, InsertBookMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InsertBookMutation, InsertBookMutationVariables>(InsertBookDocument, options);
+      }
+export type InsertBookMutationHookResult = ReturnType<typeof useInsertBookMutation>;
+export type InsertBookMutationResult = Apollo.MutationResult<InsertBookMutation>;
+export type InsertBookMutationOptions = Apollo.BaseMutationOptions<InsertBookMutation, InsertBookMutationVariables>;

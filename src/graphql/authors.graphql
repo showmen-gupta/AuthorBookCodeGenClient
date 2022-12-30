@@ -4,3 +4,10 @@ query getAuthors {
     name
   }
 }
+
+mutation createAuthor($name: String!) {
+  addAuthor(name: $name) {
+    id
+    name
+  }
+}
