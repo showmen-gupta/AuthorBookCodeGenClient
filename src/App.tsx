@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { NhostProvider } from "@nhost/react";
+import { NhostApolloProvider } from "@nhost/react-apollo";
+import React from "react";
+import "./App.css";
+import { Authors } from "./components/Authors";
+import { nhost } from "./utils/nhost";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NhostProvider nhost={nhost}>
+      <NhostApolloProvider nhost={nhost}>
+        <div className="App">
+          <div>
+            <Authors />
+          </div>
+        </div>
+      </NhostApolloProvider>
+    </NhostProvider>
   );
 }
 
