@@ -13,6 +13,10 @@ export function Authors() {
 
   const { allAuthors } = data;
 
+  const deleteAuthor = () => {
+    return null;
+  }
+
   return (
     <div className="box">
       <h3 className="title is-3">All Authors</h3>    
@@ -20,11 +24,19 @@ export function Authors() {
       <div className="tile is-parent is-vertical">
       {allAuthors?.map((author) => (
         <article className="tile is-child notification is-secondary">
-          <label className="subtitle" key={author?.id}>{author?.name}</label>
+            <div className="columns is-vcentered">
+            <div className="column is-10">
+            <label className="subtitle" key={author?.id}>{author?.name}</label>
+            </div>
+            <div className="column">
+            <button className="button is-danger" onClick={deleteAuthor}>Delete</button>
+            </div>
+          </div>
         </article>
         ))}
         </div>
         </div>
       </div>
+      
   );
 }
