@@ -13,17 +13,21 @@ function App() {
     <NhostProvider nhost={nhost}>
       <NhostApolloProvider nhost={nhost}>
         <div className="App">
-          <h1>Author Book App Graphql Code Gen</h1>
-          <div>
+          <div className="container column">
+          <div className="notification is-primary">
+            <h2 className="title is-2 is-centered"><center>Upskill on graphql</center></h2>
+          </div>
+          </div>
+          <div className="column is-three-fifths center">
             <CreateAuthor/>
           </div>
-          <div>
+          <div className="column is-three-fifths center">
             <Authors />
           </div>
-          <div>
+          <div className="column is-three-fifths center">
             <CreateBooks/>
           </div>
-          <div>
+          <div className="column is-three-fifths center">
             <Books/>
           </div>
         </div>

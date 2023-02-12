@@ -14,13 +14,17 @@ export function Authors() {
   const { allAuthors } = data;
 
   return (
-    <div>
-      <h2>All Authors</h2>
-      <ul>
-        {allAuthors?.map((author) => (
-          <li key={author?.id}>{author?.name}</li>
+    <div className="box">
+      <h3 className="title is-3">All Authors</h3>    
+      <div className="tile">
+      <div className="tile is-parent is-vertical">
+      {allAuthors?.map((author) => (
+        <article className="tile is-child notification is-secondary">
+          <label className="subtitle" key={author?.id}>{author?.name}</label>
+        </article>
         ))}
-      </ul>
-    </div>
+        </div>
+        </div>
+      </div>
   );
 }

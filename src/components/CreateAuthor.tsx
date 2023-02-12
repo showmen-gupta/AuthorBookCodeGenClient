@@ -25,28 +25,24 @@ export function CreateAuthor() {
   };
 
   return (
-    <div>
-      <h2>New Author</h2>
       <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={authorName}
-              onChange={(e) => setName(e.target.value)}
-            />
+        <form onSubmit={handleSubmit} className="box">
+        <h3 className="title is-3">Create Author</h3>
+
+        <div className="field">
+          <label className="label">Name</label>
+          <input 
+          className="input is-info" 
+          type="text" 
+          placeholder="Name"              
+          onChange={(e) => setName(e.target.value)}
+          />
           </div>
           {error && <div>Error: {error.message}</div>}
-          <br/>
           <div>
-            <button type="submit" disabled={loading}>
-              Add
-            </button>
+          <button className="button is-primary" type="submit" disabled={loading}>Add</button>
           </div>
         </form>
       </div>
-    </div>
   );
 }
