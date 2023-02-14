@@ -2,7 +2,6 @@ import { refetchGetAuthorsQuery, useDeleteAuthorMutation, useGetAuthorsQuery } f
 
 export function Authors() {
   const { data, loading, error } = useGetAuthorsQuery();
-  
   const [deleteAuthor] = useDeleteAuthorMutation({
     refetchQueries: [refetchGetAuthorsQuery()],
   });
@@ -52,6 +51,5 @@ export function Authors() {
         </div>
         </div>
       </div>
-      
   );
 }
