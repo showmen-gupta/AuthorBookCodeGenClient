@@ -1,8 +1,11 @@
-import { useGetBooksQuery } from "../utils/__generated__/graphql";
+import { refetchGetBooksQuery, useDeleteBookMutation, useGetBooksQuery } from "../utils/__generated__/graphql";
 
 export function Books() {
   const { data, loading, error } = useGetBooksQuery();
-
+  const [deleteBook] = useDeleteBookMutation({
+    refetchQueries: [refetchGetBooksQuery()],
+  });
+  
   if (loading || !data) {
     return <div>Loading</div>;
   }
@@ -13,17 +16,50 @@ export function Books() {
 
   const { allBooks } = data;
 
+  const removeBook = async (book_id: string| null | undefined) => {
+    if(!book_id) {
+      return;
+    }    
+    try {        
+        await deleteBook({
+          variables: {
+            id: book_id,
+          },
+        });
+      } catch (error) {
+        return console.error(error);
+    }
+  }
+
   return (
-    <div>
-      <h2>All Books with Authors</h2>
-      <ul>
-        {allBooks?.map((book) => (
-          <li key={book?.id}>
-            Title:&nbsp; {book?.name}&nbsp; Price:&nbsp; {book?.price}&nbsp;
-            Author:&nbsp; {book?.author.name}&nbsp;
-          </li>
-        ))}
-      </ul>
+    <div className="box">
+      <h3 className="title is-3">All Books with Authors</h3>
+      <div className="table-container">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Author</th>
+              <th>Operation</th>
+            </tr>
+          </thead>
+          <tbody>
+          {allBooks?.map((book) => (
+            <>
+            <tr>
+              <td>{book?.name}</td>
+              <td>$ {book?.price}</td>
+              <td>{book?.author.name}</td>
+              <td><button className="button is-danger" onClick={() =>removeBook(book?.id)}>Delete</button></td>
+            </tr>
+            </>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
+
+
   );
 }

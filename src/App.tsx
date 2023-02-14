@@ -13,7 +13,7 @@ function App() {
     <NhostProvider nhost={nhost}>
       <NhostApolloProvider nhost={nhost}>
         <div className="App">
-          <div className="container column">
+          <div className="container column is-three-fifths">
           <div className="notification is-primary">
             <h2 className="title is-2 is-centered"><center>Upskill on graphql</center></h2>
           </div>

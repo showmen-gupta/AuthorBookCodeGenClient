@@ -28,14 +28,13 @@ export function CreateAuthor() {
       <div>
         <form onSubmit={handleSubmit} className="box">
         <h3 className="title is-3">Create Author</h3>
-
         <div className="field">
           <label className="label">Name</label>
           <input 
-          className="input is-info" 
-          type="text" 
-          placeholder="Name"              
-          onChange={(e) => setName(e.target.value)}
+            className="input is-info" 
+            type="text" 
+            placeholder="Name"              
+            onChange={(e) => setName(e.target.value)}
           />
           </div>
           {error && <div>Error: {error.message}</div>}

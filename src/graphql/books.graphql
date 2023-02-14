@@ -21,3 +21,7 @@ mutation insertBook($name: String!, $price: Float!, $author_id: ID!) {
         }
     }
 }
+
+mutation deleteBook($id: ID!) {
+  deleteBook(id: $id) 
+}
