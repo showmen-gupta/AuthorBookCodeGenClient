@@ -1,8 +1,6 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
+#Grpahql Based React Implementation
+Simple Graphql based react application which generates custom hooks using the backend graphql schema using codegen 
+Just represents simple crud implementation on Frontend
 
 In the project directory, you can run:
 
