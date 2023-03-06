@@ -1,4 +1,4 @@
-#Grpahql Based React Implementation
+# Grpahql Based React Implementation with codegen
 Simple Graphql based react application which generates custom hooks using the backend graphql schema using codegen 
 Just represents simple crud implementation on Frontend
 
