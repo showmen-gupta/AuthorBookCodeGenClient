@@ -15,7 +15,7 @@ function App() {
         <div className="App">
           <div className="container column is-three-fifths">
           <div className="notification is-primary">
-            <h2 className="title is-2 is-centered"><center>Upskill on graphql</center></h2>
+            <h2 className="title is-2 is-centered"><center>Knowledge Sharing on GraphQl</center></h2>
           </div>
           </div>
           <div className="column is-three-fifths center">
