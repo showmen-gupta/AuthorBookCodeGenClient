@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   refetchGetAuthorsQuery,
   useCreateAuthorMutation,
-} from "../utils/__generated__/graphql";
+} from "../../utils/__generated__/graphql";
 
 export function CreateAuthor() {
   const [authorName, setName] = useState<string>("");

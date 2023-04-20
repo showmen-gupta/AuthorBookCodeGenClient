@@ -105,6 +105,14 @@ export type CreateAuthorMutationVariables = Exact<{
 
 export type CreateAuthorMutation = { __typename?: 'Mutation', addAuthor: { __typename?: 'Author', id?: string | null, name: string } };
 
+export type UpdateCreatedAuthorMutationVariables = Exact<{
+  id: Scalars['ID'];
+  name: Scalars['String'];
+}>;
+
+
+export type UpdateCreatedAuthorMutation = { __typename?: 'Mutation', updateAuthor: { __typename?: 'Author', id?: string | null, name: string } };
+
 export type DeleteAuthorMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
@@ -216,6 +224,41 @@ export function useCreateAuthorMutation(baseOptions?: Apollo.MutationHookOptions
 export type CreateAuthorMutationHookResult = ReturnType<typeof useCreateAuthorMutation>;
 export type CreateAuthorMutationResult = Apollo.MutationResult<CreateAuthorMutation>;
 export type CreateAuthorMutationOptions = Apollo.BaseMutationOptions<CreateAuthorMutation, CreateAuthorMutationVariables>;
+export const UpdateCreatedAuthorDocument = gql`
+    mutation updateCreatedAuthor($id: ID!, $name: String!) {
+  updateAuthor(id: $id, name: $name) {
+    id
+    name
+  }
+}
+    `;
+export type UpdateCreatedAuthorMutationFn = Apollo.MutationFunction<UpdateCreatedAuthorMutation, UpdateCreatedAuthorMutationVariables>;
+
+/**
+ * __useUpdateCreatedAuthorMutation__
+ *
+ * To run a mutation, you first call `useUpdateCreatedAuthorMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCreatedAuthorMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCreatedAuthorMutation, { data, loading, error }] = useUpdateCreatedAuthorMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useUpdateCreatedAuthorMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCreatedAuthorMutation, UpdateCreatedAuthorMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateCreatedAuthorMutation, UpdateCreatedAuthorMutationVariables>(UpdateCreatedAuthorDocument, options);
+      }
+export type UpdateCreatedAuthorMutationHookResult = ReturnType<typeof useUpdateCreatedAuthorMutation>;
+export type UpdateCreatedAuthorMutationResult = Apollo.MutationResult<UpdateCreatedAuthorMutation>;
+export type UpdateCreatedAuthorMutationOptions = Apollo.BaseMutationOptions<UpdateCreatedAuthorMutation, UpdateCreatedAuthorMutationVariables>;
 export const DeleteAuthorDocument = gql`
     mutation deleteAuthor($id: ID!) {
   deleteAuthor(id: $id)

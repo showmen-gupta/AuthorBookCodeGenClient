@@ -3,7 +3,7 @@ import {
   refetchGetBooksQuery,
   useGetAuthorsQuery,
   useInsertBookMutation,
-} from "../utils/__generated__/graphql";
+} from "../../utils/__generated__/graphql";
 
 export function CreateBooks() {
   const [bookName, setBookName] = useState<string>("");
@@ -57,15 +57,18 @@ export function CreateBooks() {
                 onChange={(e) => setBookPrice(parseInt(e.target.value))}
               />
             </div>            
-            <div className="select is-primary field">
-                <select onChange={(e) => setAuthortId(e.target.value)}>
-                  {data?.allAuthors?.map((author: any) => (
-                    <>
-                      <option value={author?.id}>{author?.name}</option>
-                    </>         
-                  ))}
-              </select>
+            <div className="field">
+            <label className="label">Author</label>
+            <div className="select is-primary">
+                    <select onChange={(e) => setAuthortId(e.target.value)}>
+                      {data?.allAuthors?.map((author: any) => (
+                        <>
+                          <option value={author?.id}>{author?.name}</option>
+                        </>         
+                      ))}
+                  </select>
             </div>
+        </div>
           {error && <div>Error: {error.message}</div>}
           <br/>
           <div>

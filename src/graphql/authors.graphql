@@ -12,6 +12,13 @@ mutation createAuthor($name: String!) {
   }
 }
 
+mutation updateCreatedAuthor($id: ID!, $name: String!) {
+  updateAuthor(id: $id name: $name) {
+    id
+    name
+  }
+}
+
 mutation deleteAuthor($id: ID!) {
   deleteAuthor(id: $id) 
 }

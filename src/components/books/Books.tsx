@@ -1,4 +1,4 @@
-import { refetchGetBooksQuery, useDeleteBookMutation, useGetBooksQuery } from "../utils/__generated__/graphql";
+import { refetchGetBooksQuery, useDeleteBookMutation, useGetBooksQuery } from "../../utils/__generated__/graphql";
 
 export function Books() {
   const { data, loading, error } = useGetBooksQuery();

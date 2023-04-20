@@ -1,4 +1,4 @@
-import { refetchGetAuthorsQuery, useDeleteAuthorMutation, useGetAuthorsQuery } from "../utils/__generated__/graphql";
+import { refetchGetAuthorsQuery, useDeleteAuthorMutation, useGetAuthorsQuery } from "../../utils/__generated__/graphql";
 
 export function Authors() {
   const { data, loading, error } = useGetAuthorsQuery();
