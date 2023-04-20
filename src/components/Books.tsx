@@ -5,7 +5,6 @@ export function Books() {
   const [deleteBook] = useDeleteBookMutation({
     refetchQueries: [refetchGetBooksQuery()],
   });
-  
   if (loading || !data) {
     return <div>Loading</div>;
   }
@@ -35,7 +34,7 @@ export function Books() {
     <div className="box">
       <h3 className="title is-3">All Books with Authors</h3>
       <div className="table-container">
-        <table className="table">
+        <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
           <thead>
             <tr>
               <th>Title</th>
